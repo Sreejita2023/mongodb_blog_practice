@@ -1,6 +1,5 @@
 const mongoose=require ('mongoose')
-const Users=require('./Users')
-const Posts=require('./Posts')
+
 const likeSchema=new mongoose.Schema(
    {
    content:{
@@ -10,13 +9,11 @@ const likeSchema=new mongoose.Schema(
     },
     authorid:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:Users,
+        ref:"Users",
     },
     postid:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:Posts,
+        ref:"Posts",
     },
     createdAt:{
         type:Date,

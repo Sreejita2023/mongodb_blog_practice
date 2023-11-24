@@ -2,8 +2,8 @@ const Users=require('../models/Users')
 
 exports.createUsers=async(req,res)=>{
       try{
-        const{id,username,password}=req.body
-        const response=await Users.create({id,username,password})
+        const{username,password}=req.body
+        const response=await Users.create({username,password})
         res.status(200).json({
             success:true,
             date:response,

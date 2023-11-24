@@ -1,6 +1,6 @@
 const mongoose=require ('mongoose')
-const Users=require('./Users')
-const Posts=require('./Posts')
+// const Users=require('./Users')
+// const Posts=require('./Posts')
 const commentSchema=new mongoose.Schema(
    {
    content:{
@@ -10,13 +10,11 @@ const commentSchema=new mongoose.Schema(
     },
     authorid:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:Users,
+        ref:"Users",
     },
     postid:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:Posts,
+        ref:"Posts",
     },
     createdAt:{
         type:Date,

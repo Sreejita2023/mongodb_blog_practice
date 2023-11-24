@@ -1,12 +1,17 @@
 const Comments=require('../models/Comments')
-
+const Posts=require('../models/Posts')
+const Users=require('../models/Users')
 exports.createComments=async(req,res)=>{
       try{
         const{content,authorid,postid}=req.body
         const response=await Comments.create({content,authorid,postid})
+      //   new is used to update the old values or array of posts
+        const updatePost=await Posts.findByIdAndUpdate(postid,{$push:{comments:response._id}},{new:true}).populate("comments").exec()
+        const updateUser=await Users.findByIdAndUpdate(authorid,{$push:{comments:response._id}},{new:true}).populate("comments").exec()
         res.status(200).json({
             success:true,
-            date:response,
+            userdata:updateUser,
+            postdata:updatePost,
             message:'entry created successfully'
         })
       }

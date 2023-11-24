@@ -1,11 +1,6 @@
 const mongoose=require ('mongoose')
 const userSchema=new mongoose.Schema(
    {
-   id:{
-        type:String,
-        required:true,
-        maxLength:50,
-    },
    username:{
         type:String,
         required:true,
@@ -16,6 +11,18 @@ const userSchema=new mongoose.Schema(
         required:true,
         maxLength:50
     },
+    posts:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Posts",
+    }],
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Likes",
+    }],
+    comments:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comments",
+    }],
     createdAt:{
         type:Date,
         required:true,

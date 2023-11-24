@@ -1,5 +1,7 @@
+// import mongoose
 const mongoose=require ('mongoose')
-const Users=require('./Users')
+
+// route handler
 const postSchema=new mongoose.Schema(
    {
    content:{
@@ -9,9 +11,16 @@ const postSchema=new mongoose.Schema(
     },
     authorid:{
         type:mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref:Users,
+        ref:"Users",
     },
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Likes",
+    }],
+    comments:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Comments",
+    }],
     createdAt:{
         type:Date,
         required:true,
